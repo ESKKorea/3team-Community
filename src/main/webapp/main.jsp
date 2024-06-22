@@ -27,6 +27,7 @@
 			</c:if>
 			<br>
 			<a href="<c:url value='/boardList'/>">게시물 목록</a>
+			<a href="<c:url value='galleryList'/>">갤러리</a>
 		</main>
 	</div>	
 </body>
