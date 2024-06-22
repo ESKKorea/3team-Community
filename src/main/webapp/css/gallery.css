@@ -112,9 +112,24 @@ th {
 	background-color: #f8f8f8;
 }
 
-.search-form { /* 검색폼 위아래 마진 5px */
-	margin: 10px auto;
-	width: 300px !important;
+.search-form input[type="text"] {
+	width: 300px;
+	border-radius: 15px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+
+.search-form input[type="submit"] {
+	border-radius: 15px;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	background-color: #f8f8f8;
+	cursor: pointer;
+}
+
+.search-form input[type="submit"]:hover {
+	background-color: #e0e0e0;
 }
 
 .button-container {
