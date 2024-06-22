@@ -9,6 +9,8 @@
 <meta charset="UTF-8">
 <title>3Team</title>
 	<title>Visualize by TEMPLATED</title>
+	    <link rel="icon" href="favicon.ico" type="image/x-icon">
+	
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" type="text/css" href="<c:url value='/css/3team.css' />" />
@@ -41,7 +43,7 @@
 					</a>
 					<a href="#">
 						<img src="image/cat6.jpg" alt="">
-						<h3>어</h3>
+						<h3>아 졸려</h3>
 					</a>
 					<a href="#">
 						<img src="image/cat9.jpg" alt="">

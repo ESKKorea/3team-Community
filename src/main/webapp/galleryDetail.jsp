@@ -65,7 +65,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>boardList.jsp</title>
+<title>galleryDetail.jsp</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/board.css'/>?v=${now}" />
 </head>

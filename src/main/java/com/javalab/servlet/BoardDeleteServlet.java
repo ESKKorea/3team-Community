@@ -18,6 +18,9 @@ import com.javalab.dao.BoardDAO;
 public class BoardDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+    /**
+     * 
+     */
     public BoardDeleteServlet() {
         super();
     }
@@ -26,28 +29,22 @@ public class BoardDeleteServlet extends HttpServlet {
 	 * 게시물 삭제 메소드
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		// 파라미터 인코딩
 		request.setCharacterEncoding("utf-8");
-		
 		// 삭제할 게시물 번호 추출
 		int bno = Integer.parseInt(request.getParameter("bno"));
-		
 		// DAO에 게시물 삭제 요청
-		//BoardDAO boardDAO = new BoardDAO();
 		BoardDAO boardDAO = BoardDAO.getInstance();
-		
 		int row = boardDAO.deleteBoard(bno);
 		
-		// 데이터베이스 작업 결과로 분기
+		// 데이터베이스 작업 결과로 분기 
 		if(row > 0) {
 			String contextPath = request.getContextPath();
 			response.sendRedirect(contextPath + "/boardList");
 		}else {
 			request.setAttribute("error", "게시물 삭제에 실패했습니다.");
-			RequestDispatcher rd = request.getRequestDispatcher("/boardDetail?bno=" + bno);
+			RequestDispatcher rd = request.getRequestDispatcher("/boardDtail?bno=" + bno);
 			rd.forward(request, response);
 		}
 	}
-
 }

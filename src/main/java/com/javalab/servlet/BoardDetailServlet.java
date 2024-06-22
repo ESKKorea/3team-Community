@@ -22,23 +22,21 @@ public class BoardDetailServlet extends HttpServlet {
     public BoardDetailServlet() {
         super();
     }
-
-	/**
-	 * 게시물 내용 조회
-	 */
+    /**
+     * 게시물 내용 조회
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		// 파라미터 추출
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		
 		// BoardDAO 객체 생성
-		//BoardDAO boardDAO = new BoardDAO();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		
-		// 1. 조회증가
+		//1.조회 증가
 		boardDAO.incrementHitNo(bno);
 		
-		// 2. 게시물 조회
+		//2. 게시물 조회
 		BoardVO boardVO = boardDAO.getBoard(bno);
 		
 		// request 영역에 저장
@@ -47,6 +45,9 @@ public class BoardDetailServlet extends HttpServlet {
 		// 게시물 내용보기 페이지 이동
 		RequestDispatcher rd = request.getRequestDispatcher("/boardDetail.jsp");
 		rd.forward(request, response);
+		
+		
 	}
+
 
 }

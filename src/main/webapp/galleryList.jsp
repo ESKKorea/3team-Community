@@ -12,7 +12,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>boardList.jsp</title>
+<title>gelleryList.jsp</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 <%-- css 자원요청 문자열에 시시각각 변하는 시간을 파라미터로 전달하기 때문에 서브는 매번 새로운 요청을 착각, 
 	즉 늘 새로운 css를 읽어온다. 캐싱안함. --%>
 <link rel="styleSheet" type="text/css"
@@ -69,7 +71,7 @@
 			<div class="button-container">
 				<br> <a href="<c:url value='/galleryInsertForm.jsp'/>"><button
 						type="button" id="button">게시물 작성</button></a> <a
-					href="${contextPath }/main.jsp"><button type="button"
+					href="${contextPath }/index.jsp"><button type="button"
 						id="button">메인 페이지로 이동</button></a>
 			</div>
 		</main>

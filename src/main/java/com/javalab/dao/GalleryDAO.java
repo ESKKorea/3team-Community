@@ -380,4 +380,29 @@ public int insertGallery(GalleryVO galleryVO) {
       }
       return totalCount;
    }
-}
+
+   public List<GalleryVO> getRecentGalleries() {
+	    List<GalleryVO> galleryList = new ArrayList<>();
+	    try {
+	        conn = dataSource.getConnection();
+	        String sql = "SELECT bno, title, file_name, file_path, reg_date FROM gallery ORDER BY reg_date DESC FETCH FIRST 3 ROWS ONLY";
+	        pstmt = conn.prepareStatement(sql);
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            GalleryVO gallery = new GalleryVO();
+	            gallery.setBno(rs.getInt("bno"));
+	            gallery.setTitle(rs.getString("title"));
+	            gallery.setFileName(rs.getString("file_name"));
+	            gallery.setFilePath(rs.getString("file_path"));
+	            gallery.setRegDate(rs.getDate("reg_date"));
+	            galleryList.add(gallery);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        closeResource();
+	    }
+	    return galleryList;
+   		}
+	}

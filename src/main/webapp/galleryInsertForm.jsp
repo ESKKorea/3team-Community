@@ -9,6 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 작성</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 <link rel="stylesheet" type="text/css" href="css/board.css" />
 <script src="<c:url value='/ckeditor/ckeditor.js' />"></script>
 <script src="<c:url value='/ckeditor/config.js' />"></script>
@@ -37,11 +39,13 @@
                             CKEDITOR.replace('description');
                         </script>
                     </div>
-                    <div>
-                        <input type="submit" value="저장">
-                        <input type="reset" value="다시쓰기">
-                    </div>
-                </form>
+					<div>
+					   <input type="submit" value="저장">
+        				<input type="reset" value="다시쓰기">
+						<a href="<c:url value='/galleryList' />"><button type="button">Gallery보기</button></a> 
+						  <a href="${pageContext.request.contextPath}/index.jsp"><button type="button">첫화면보기</button></a>
+					</div>
+				</form>
             </c:if>
             <c:if test="${empty sessionScope.member}">
                 <script>

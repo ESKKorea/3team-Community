@@ -12,25 +12,37 @@ import javax.servlet.http.HttpSession;
 /**
  * 로그아웃 서블릿
  */
-@WebServlet("/logout")
+@WebServlet("/logoutServlet")
 public class LogoutServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor.
+     */
     public LogoutServlet() {
-        super();
+        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * 로그아웃 메소드
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// request 객체에서 세션 객체 얻기
-		HttpSession ses = request.getSession();
-		// 세션에서 member라는 이름으로 저장된 객체 삭제
-		ses.removeAttribute("member");
-		// 세션 전체를 무효화
-		ses.invalidate();
-		// 로그인 페이지로 이동
-		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath + "/loginForm.jsp");	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // request 객체에서 세션 객체 얻기
+        HttpSession session = request.getSession(false); // 세션이 없으면 새로 생성하지 않음
+        
+        if (session != null) {
+            // 세션에서 member라는 이름으로 저장된 객체 삭제
+            session.removeAttribute("member");
+            // 세션 전체를 무효화
+            session.invalidate();
+        }
+
+        // 로그인 페이지로 이동
+        String contextPath = request.getContextPath();
+        response.sendRedirect(contextPath + "/index.jsp");
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
+
 }
