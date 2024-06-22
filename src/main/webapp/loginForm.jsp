@@ -18,35 +18,7 @@
 	</style>
 </head>
 <body>
-		<article class="profile">
-			<img src="img/member1.jpg" alt="프로필 이미지" >
-
-			<h1>DCODELAB</h1>
-			<h2>UI/UX INTERACTIVE DEVELOPER</h2>
-
-			<a href="#" class="btnView">VIEW MORE</a>
-		</article>		
-
-		<ul class="contact">
-			<li>
-				<i class="fab fa-facebook-f"></i>
-				<span>Visit My Facebook page.</span>
-			</li>
-			<li>
-				<i class="fas fa-envelope "></i>
-				<span>hadaboni80@naver.com</span>
-			</li>			
-		</ul>
-
-
-
-
-
-
-
-
-
-
+		
 	<h3>로그인</h3>
 	<form action="<c:url value='/login'/>" method="post">
 		<div>
