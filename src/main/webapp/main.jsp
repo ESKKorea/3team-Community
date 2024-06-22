@@ -29,6 +29,5 @@
 			<a href="<c:url value='/boardList'/>">게시물 목록</a>
 		</main>
 	</div>	
-	<div><h1>jsaseok</h1></div>
 </body>
 </html>
