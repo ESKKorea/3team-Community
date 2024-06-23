@@ -32,5 +32,5 @@ public class LogoutServlet extends HttpServlet {
 		ses.invalidate();
 		// 로그인 페이지로 이동
 		String contextPath = request.getContextPath();
-		response.sendRedirect(contextPath + "/loginForm.jsp");	}
+		response.sendRedirect(contextPath + "/main.jsp");	}
 }

@@ -20,7 +20,7 @@
         </div>
         <div class="nav_but">
             <a href="${contextPath}/boardList">자유게시판</a>
-            <a href="">갤러리 게시판</a>
+            <a href="${contextPath}/galleryList">갤러리 게시판</a>
             <a href="">분양 게시판</a>
              <c:choose>
             <c:when test="${not empty sessionScope.member}">

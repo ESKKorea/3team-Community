@@ -36,6 +36,9 @@ public class BoardVO implements Serializable {
 	private int replyOrder;		// 그룹내 정렬순서
 	private int replyIndent;	// 들여쓰기
 	
+	
+
+	
 	// 필요에 의해서 만든 생성자
 	public BoardVO(String title, String content, String memberId) {
 		this.title = title;
@@ -49,4 +52,5 @@ public class BoardVO implements Serializable {
 		this.content = content;
 		this.memberId = memberId;
 	}	
+
 }
