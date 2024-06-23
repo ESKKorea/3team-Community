@@ -52,14 +52,22 @@ public class BoardDetailServlet extends HttpServlet {
             if (boardVO == null) {
                 throw new IllegalArgumentException("게시물을 찾을 수 없습니다.");
             }
-            // 댓글 목록 조회
+
+            // 4. 댓글 목록 조회
             CommentDAO commentDAO = CommentDAO.getInstance();
             List<CommentVO> comments = commentDAO.getCommentsByBoardId(bno);
             
-            // request 영역에 저장
+            // Retrieve previous and next board details
+            BoardVO previousBoard = boardDAO.getPreviousBoard(bno);
+            BoardVO nextBoard = boardDAO.getNextBoard(bno);
+
+            // Set attributes in request scope
             request.setAttribute("boardVO", boardVO);
             request.setAttribute("comments", comments);
+            request.setAttribute("previousBoard", previousBoard);
+            request.setAttribute("nextBoard", nextBoard);
 
+        
 
             // 게시물 내용보기 페이지 이동
             RequestDispatcher rd = request.getRequestDispatcher("/boardDetail.jsp");
