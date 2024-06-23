@@ -19,9 +19,9 @@
             <img src="./image/logo.png" alt="">
         </div>
         <div class="nav_but">
-            <a href="${contextPath}/boardList">커뮤니티</a>
-            <a href="">쇼핑</a>
-            <a href="">회원가입</a>
+            <a href="${contextPath}/boardList">자유게시판</a>
+            <a href="${contextPath}/galleryList">갤러리 게시판</a>
+            <a href="">분양 게시판123123123</a>
              <c:choose>
             <c:when test="${not empty sessionScope.member}">
             	<div class="user-info">
