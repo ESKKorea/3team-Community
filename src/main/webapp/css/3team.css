@@ -1,0 +1,258 @@
+@charset "UTF-8";
+body {
+    background-image: url('../image/bg.jpg');	
+    background-size: cover;
+}
+
+#wrapper {
+    max-width: 68rem;
+    margin: 5rem auto;
+}
+
+
+		/* 추가한 CSS 부분 */
+        #header {
+            text-align: center;
+            padding-top: 3rem;
+            padding-bottom: 3rem; /* 예시로 3rem으로 조정 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; 
+            padding-left: 2rem; /* 좌측 여백을 1rem으로 설정 */
+            padding-right: 1rem; /* 우측 여백을 1rem으로 설정 */
+        }
+
+		.header-nav {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.header-nav a {
+			color: white;
+			text-decoration: none;
+			font-size: 1.2rem;
+			font-weight: bold;
+			transition: color 0.3s ease;
+			display: flex;
+			align-items: center;
+		}
+
+		.header-nav a:hover {
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		.header-nav i {
+			font-size: 1.5rem;
+			margin-right: 0.5rem;
+		}
+
+		.header-nav span.label {
+			display: none;
+		}
+
+		.header-nav a:hover .label {
+			display: inline-block;
+			margin-left: 0.5rem;
+		}
+
+		.search-box {
+			margin-top: 2rem; /* 검색창과 다른 요소와의 간격 조정 */
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.search-box input[type="text"] {
+			padding: 0.8rem;
+			border: none;
+			border-radius: 0.3rem;
+			font-size: 1rem;
+			flex-grow: 1;
+		}
+
+		.search-box button {
+			padding: 0.8rem;
+			background-color: rgba(255, 255, 255, 0.1);
+			border: none;
+			border-radius: 0.3rem;
+			color: white;
+			font-size: 1rem;
+			cursor: pointer;
+		}
+
+		.search-box button:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+
+		.avatar {
+			align-self: flex-end; /* 사진들을 아래 정렬 */
+		}
+
+.thumbnails .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    grid-template-rows: auto; /* auto height for single row */
+    gap: 1rem;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.thumbnails .layout-1,
+.thumbnails .layout-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.thumbnails a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    overflow: hidden; /* Ensures images don't overflow */
+}
+
+.thumbnails img {
+    width: 100%; /* 이미지가 부모 요소인 <a> 태그에 맞게 폭을 채웁니다. */
+    height: auto; /* 이미지의 원래 종횡비를 유지합니다. */
+    max-width: 100%; /* 최대 너비를 설정하여 넘치지 않도록 합니다. */
+    object-fit: cover; /* 이미지를 부모 요소에 맞춰 잘라내지 않고 채웁니다. */
+    border-radius: 0.3rem;
+    max-height: 300px; /* 예시: 모든 이미지의 최대 높이를 300px로 설정 */
+}
+
+.thumbnails h3 {
+    margin-top: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    font-weight: 200;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0.3rem;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .thumbnails .grid-container {
+        grid-template-columns: 1fr; /* Switch to 1 column layout on smaller screens */
+    }
+}
+
+
+
+.copyright {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 200;
+    padding-bottom: 3rem;
+    font-size: 0.8rem;
+}
+
+.copyright a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+}
+
+.copyright:before {
+    content: '';
+    display: block;
+    margin: 2rem auto;
+    width: 10rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 3rem;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between; /* 요소들을 좌우 정렬 */
+    align-items: center; /* 수직 정렬 */
+    text-align: left; /* 텍스트를 왼쪽 정렬 */
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 200;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: none; /* 실선을 없앱니다. */
+}
+
+#footer nav ul {
+    list-style-type: none; /* 목록 기호를 없앱니다. */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem; /* 링크 사이의 간격을 설정합니다. */
+}
+
+#footer nav ul li {
+    display: inline-block;
+}
+
+#footer nav ul li a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+#footer nav ul li a:hover {
+    color: white;
+}
+
+#footer .social-icons {
+    display: flex;
+    gap: 1rem; /* 아이콘 사이의 간격을 설정합니다. */
+}
+
+#footer .social-icons a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+#footer .social-icons a:hover {
+    color: white;
+}
+
+#footer .copyright {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 200;
+    font-size: 0.8rem;
+}
+
+#footer .copyright a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+}
+
+#footer .copyright a:hover {
+    color: white;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icons a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333; /* 아이콘 색상 설정 */
+    margin: 0 15px; /* 아이콘 간격 설정 */
+}
+
+.social-icons a i {
+    font-size: 24px; /* 아이콘 크기 설정 */
+    margin-bottom: 5px; /* 아이콘과 레이블 사이의 간격 조정 */
+}
+
+.social-icons a .label {
+    font-size: 14px; /* 레이블 텍스트 크기 설정 */
+}
