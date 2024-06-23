@@ -67,60 +67,32 @@
 <meta charset="UTF-8">
 <title>boardList.jsp</title>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/board.css'/>?v=${now}" />
+	href="<c:url value='/css/galleryDetail.css'/>?v=${now}" />
 </head>
 <body>
-	<div class="container">
-		<%-- 헤더부분 include 액션 태그 사용, c:url 사용금지, 경로 직접 지정해야함 --%>
-		<jsp:include page="/common/header.jsp" />
-	</div>
-	<main>
-		<table border="1">
-			<tr>
-				<th>게시물번호</th>
-				<td><c:out value="${gallery.bno}" /></td>
-			</tr>
-			<tr>
-				<th>제목</th>
-				<td><c:out value="${gallery.title}" /></td>
-			</tr>
-			<tr>
-				<th>사진</th>
-				<td><img src="${contextPath}/uploads/${gallery.fileName}"
-					alt="${gallery.title}" class="image-uploaded"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><c:out value="${gallery.description}" /></td>
-			</tr>
-			<tr>
-				<th>작성자</th>
-				<td><c:out value="${gallery.memberId}" /></td>
-			</tr>
-			<tr>
-				<th>작성일자</th>
-				<td><fmt:formatDate value="${gallery.regDate}"
-						pattern="yyyy-MM-dd HH:mm:ss" /></td>
-			</tr>
-		</table>
-	</main>
-	<br>
-	<div class="button-container">
-		<a href="<c:url value='/galleryList'/>"><button type="button"
-				id="button">목록</button></a> <a
-			href="<c:url value='/galleryUpdate'/>?bno=${galleryVO.bno}"><button
-				type="button" id="button">수정</button></a>
-		<form action="<c:url value='/galleryDelete'/>" method="post">
-			<input type="hidden" name="bno" value="${galleryVO.bno}"> <input
-				type="submit" value="삭제" onclick="return confirm('정말 삭제하시겠습니까?');">
-		</form>
-		<a href="<c:url value='/reply'/>?bno=${galleryVO.bno}"><button>답글작성</button></a>
-	</div>
-	 <script>
+    <div class="container">
+        <img src="${contextPath}/uploads/${gallery.fileName}" alt="${gallery.title}" class="image-uploaded">
+        <div class="gallery-info">
+            <h2>${gallery.title}</h2>
+            <p><strong>작성자:</strong> ${gallery.memberId}</p>
+            <p><strong>작성일자:</strong> <fmt:formatDate value="${gallery.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+            <p><strong>내용:</strong> ${gallery.description}</p>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="<c:url value='/galleryList'/>"><button type="button" id="button">목록</button></a>
+        <form action="<c:url value='/galleryDelete'/>" method="post">
+            <input type="hidden" name="bno" value="${gallery.bno}">
+            <input type="submit" value="삭제" onclick="return confirm('정말 삭제하시겠습니까?');" style="padding: 10px 20px; border: none; cursor: pointer; background-color: #f8f8f8; color: black; border-radius: 5px; transition: background-color 0.3s ease;">
+        </form>
+        <a href="<c:url value='/reply'/>?bno=${gallery.bno}"><button style="padding: 10px 20px; border: none; cursor: pointer; background-color: #f8f8f8; color: black; border-radius: 5px; transition: background-color 0.3s ease;">답글작성</button></a>
+    </div>
+<script>
         // 이미지 크기 조정
         var img = document.querySelector('.image-uploaded');
-        if (img && img.width > 800) {
-            img.style.width = '800px';
+        if (img && img.width > 500) {
+            img.style.width = '500px';
             img.style.height = 'auto';
         }
     </script>
