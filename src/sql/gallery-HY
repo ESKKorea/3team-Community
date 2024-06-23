@@ -1,0 +1,17 @@
+/* 갤러리 데이터 입력 */
+create table gallery(
+    bno number constraint pk_gallery primary key,
+    title varchar2(200) not null,
+    description clob,
+    member_id varchar2(20),
+    file_name VARCHAR(255) NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    reg_date date default sysdate,
+    constraint fk_gallery_member_id foreign key(member_id) references member(member_id)
+);
+
+alter table gallery add reply_group number(5) default 0; /* 원글과 답글을 묶어주는 역할(그룹) */
+alter table gallery add reply_order number(5) default 0; /* 그룹 내 정렬 순서 */
+alter table gallery add  reply_indent number(5) default 0;
+
+create sequence seq_gallery increment by 1 start with 1;
