@@ -83,11 +83,11 @@
 				</c:forEach>
 				<!-- 이전글과 다음글 섹션 -->
 				<div class="prev-next-section">
-					<c:if test="${not empty prevBoard}">
+					<c:if test="${not empty previousBoard}">
 						<div class="previous">
 							<h3>이전글</h3>
-							<p>번호: ${prevBoard.bno}, 제목: ${prevBoard.title}</p>
-							<a href="<c:url value='/boardDetail'/>?bno=${prevBoard.bno}">자세히
+							<p>번호: ${previousBoard.bno}, 제목: ${previousBoard.title}</p>
+							<a href="<c:url value='/boardDetail'/>?bno=${previousBoard.bno}">자세히
 								보기</a>
 						</div>
 					</c:if>

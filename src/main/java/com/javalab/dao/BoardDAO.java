@@ -287,7 +287,7 @@ public class BoardDAO {
 			closeResource();
 		}
 		return previousBoard;
-	}
+	} 	
 
 	// Method to get next board details
 	public BoardVO getNextBoard(int bno) throws SQLException {
