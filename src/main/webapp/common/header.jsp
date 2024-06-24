@@ -4,7 +4,7 @@
 
 <header class="header">
 	<nav>
-		<a href="#">자유 게시판</a>
+		<a href="#">Free List</a>
 	</nav>
 	<div class="user-info">
 		<c:if test="${not empty sessionScope.member}">
