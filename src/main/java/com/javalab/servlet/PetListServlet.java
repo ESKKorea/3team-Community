@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javalab.dao.PetDAO;
+import com.javalab.util.PageNavigator;
 import com.javalab.vo.PetVO;
 
 /**
@@ -29,44 +30,45 @@ public class PetListServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // 키워드 파라미터 추출 (이 부분은 필요에 따라 추가할 수 있음)
+        // 키워드 파라미터 추출
         String keyword = request.getParameter("keyword");
 
         // 사용자가 요청한 페이지(화면 하단의 페이지 번호 클릭했을 때)
         String pageNum = request.getParameter("pageNum");
 
         // 처음 화면이 열릴 때는 기본적으로 1페이지가 보이도록 설정
-        int currentPage = 1;
-        if (pageNum != null && !pageNum.isEmpty()) {
-            currentPage = Integer.parseInt(pageNum);
+        if (pageNum == null) {
+            pageNum = "1";
         }
-
-        // 한 페이지에 보여줄 반려동물 수
-        int petsPerPage = 10;
 
         // 데이터베이스 전담 객체 생성
         PetDAO petDAO = PetDAO.getInstance();
 
-        // 전체 반려동물 수 가져오기
+        // 전체 반려동물 수 구하기 (가정)
         int totalCount = petDAO.getAllCount(); // 실제 구현 필요
 
-        // 페이징 처리된 페이지 목록 가져오기
-        List<PetVO> petList = petDAO.getPetList(currentPage, petsPerPage);
+        // PageNavigator 객체 생성
+        PageNavigator pageNavigator = new PageNavigator();
+
+        // 현재 페이지 설정
+        int currentPage = Integer.parseInt(pageNum);
+
+        // 페이징 처리된 페이지 목록 문자열 생성
+        String pageNavigatorString = pageNavigator.getPageNavigator(
+                totalCount, // 전체 반려동물 수
+                10, // 한 페이지에 보여줄 반려동물 수
+                10, // 페이지에 보여줄 페이지 번호 수
+                currentPage); // 현재 페이지
+
+        // petList 가져오기
+        List<PetVO> petList = petDAO.getPetList(currentPage, 10); // 실제 구현 필요
 
         // request 영역에 데이터 저장
+        request.setAttribute("page_navigator", pageNavigatorString); // 페이징 처리 문자열
         request.setAttribute("petList", petList); // 반려동물 목록
-        request.setAttribute("totalCount", totalCount); // 전체 반려동물 수 (페이징 계산용)
 
         // petList.jsp로 forward
         RequestDispatcher rd = request.getRequestDispatcher("/petList.jsp");
         rd.forward(request, response);
-    }
-
-    /**
-     * 반려동물 등록 (POST 요청 처리는 여기서 사용하지 않으므로 생략)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // doPost는 여기서 사용하지 않으므로 생략
     }
 }

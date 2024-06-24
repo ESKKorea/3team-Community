@@ -1,7 +1,6 @@
 package com.javalab.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,19 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javalab.dao.CommentDAO;
 import com.javalab.dao.PetDAO;
-import com.javalab.vo.CommentVO;
 import com.javalab.vo.PetVO;
 
 /**
  * 반려동물 상세 정보 보기 서블릿
  */
 @WebServlet("/petDetail")
-public class PetDetailServelt extends HttpServlet {
+public class PetDetailServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public PetDetailServelt() {
+    public PetDetailServlet() {
         super();
     }
 
@@ -50,7 +47,10 @@ public class PetDetailServelt extends HttpServlet {
                 throw new IllegalArgumentException("반려동물을 찾을 수 없습니다.");
             }
 
-            // 반려동물 상세 정보 페이지 이동
+            // request 영역에 데이터 저장
+            request.setAttribute("pet", petVO);
+
+            // 반려동물 상세 정보 페이지로 forward
             RequestDispatcher rd = request.getRequestDispatcher("/petDetail.jsp");
             rd.forward(request, response);
         } catch (NumberFormatException e) {
