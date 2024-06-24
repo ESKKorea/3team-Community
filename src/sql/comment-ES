@@ -1,0 +1,29 @@
+/*********************************************************************************************************************************************/
+/* 댓글 데이터 입력 */
+
+--시퀸스 생성
+CREATE SEQUENCE COMMENT_SEQ
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+-- 테이블 생성
+CREATE TABLE COMMENTS (
+    ID NUMBER PRIMARY KEY,
+    BOARD_ID NUMBER NOT NULL,
+    MEMBER_ID VARCHAR2(20) NOT NULL,
+    CONTENT VARCHAR2(4000) NOT NULL,
+    REG_DATE date default sysdate,
+    FOREIGN KEY (BOARD_ID) REFERENCES BOARD(BNO),
+    FOREIGN KEY (MEMBER_ID) REFERENCES MEMBER(MEMBER_ID)
+);
+
+CREATE OR REPLACE TRIGGER COMMENTS_BEFORE_INSERT
+BEFORE INSERT ON COMMENTS
+FOR EACH ROW
+BEGIN
+    :NEW.ID := COMMENT_SEQ.NEXTVAL;
+    :NEW.REG_DATE := SYSDATE;
+END;
+

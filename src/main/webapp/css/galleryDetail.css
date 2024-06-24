@@ -1,0 +1,119 @@
+
+body{
+	
+}
+.nav {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.nav .logo img {
+    width: 110px;
+    height: 70px;
+}
+
+.nav .nav_but {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* 각 링크 사이의 간격을 설정 */
+}
+
+.nav .nav_but a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav .nav_but a:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    border-color: #ccc;
+}
+
+.nav .nav_but a:active {
+    background-color: #ddd;
+    color: black;
+    border-color: #999;
+}
+
+.nav .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 사용자 정보 내 요소들 사이의 간격 설정 */
+}
+
+.nav .user-info p {
+    margin: 0;
+    
+}
+
+.nav .user-info a {
+    text-decoration: none;
+    color: #black	;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+
+
+
+main {
+	border: 2px solid black;
+	font-family: Arial, sans-serif;
+	margin: 100px;
+	padding: 25px;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 20px;
+}
+
+.h2{
+	font-size: 30px;
+}
+
+.gallery-info {
+	margin-left: 20px;
+}
+
+.image-uploaded {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 15px;
+	gap: 10px;
+}
+
+.button-container button {
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	background-color: #f8f8f8;
+	color: black;
+	border-radius: 5px;
+}
+
+.button-container button:hover {
+	background-color: #e0e0e0;
+}
+</
+style
+>
