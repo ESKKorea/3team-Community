@@ -89,13 +89,15 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td align="center" colspan="8">Copyright javalab Corp.ltd All Rights Reserved</td>
+							<td align="center" colspan="8">Copyright Be My Pet! Corp.ltd All Rights Reserved</td>
 						</tr>
 					</tfoot>
 				</table>
 			</c:if>
 			<br>
 			<a href="<c:url value='/boardInsertForm.jsp'/>">게시물 작성</a>
+			 <a  href="${contextPath }/index.jsp"><button type="button"
+						id="button">메인 페이지로 이동</button></a>
 		</main>
 	</div>
 </body>

@@ -70,6 +70,7 @@
 			
 			<br>
 			<a href="<c:url value='/petInsertForm.jsp'/>">유기견/유기묘 등록</a>
+			 <a 	href="<c:url value='/index.jsp' />">메인 페이지로 이동</a>
 		</main>
 	</div>		
 </body>

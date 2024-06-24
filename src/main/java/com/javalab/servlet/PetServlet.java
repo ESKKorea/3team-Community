@@ -1,6 +1,7 @@
 package com.javalab.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,15 +21,34 @@ public class PetServlet extends HttpServlet {
         super();
     }
 
+    private boolean isLoggedIn(HttpSession session) {
+        MemberVO memberVO = (MemberVO) session.getAttribute("member");
+        return memberVO != null;
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        if (!isLoggedIn(session)) {
+            // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
         // Redirect to the pet insert form page
         response.sendRedirect(request.getContextPath() + "/petInsertForm.jsp");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	System.out.println("petservlet dopost");
+        System.out.println("petservlet dopost");
+
+        HttpSession session = request.getSession();
+        if (!isLoggedIn(session)) {
+            // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+
         // 요청으로부터 데이터 인코딩 설정
         request.setCharacterEncoding("UTF-8");
 
@@ -40,7 +60,6 @@ public class PetServlet extends HttpServlet {
         System.out.println("petservlet dopost name : " + name);
 
         // 세션에서 로그인된 회원 정보 가져오기
-        HttpSession session = request.getSession();
         MemberVO memberVO = (MemberVO) session.getAttribute("member");
         String memberId = memberVO.getMemberId();
 
@@ -69,4 +88,3 @@ public class PetServlet extends HttpServlet {
         }
     }
 }
-

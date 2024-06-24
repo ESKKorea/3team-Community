@@ -55,8 +55,8 @@
         <a href="<c:url value='/galleryInsertForm.jsp'/>">
             <button type="button" id="button">게시물 작성</button>
         </a>
-        <a href="${contextPath }/main.jsp">
-            <button type="button" id="button">메인 페이지로 이동</button>
+         <a	href="${contextPath }/index.jsp"><button type="button"
+						id="button">메인 페이지로 이동</button></a>
         </a>
     </div>
 </main>
