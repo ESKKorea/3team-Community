@@ -267,9 +267,9 @@ public class BoardDAO {
 
 	// Method to get previous board details
 	public BoardVO getPreviousBoard(int bno) throws SQLException {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		/*
+		 * Connection conn = null; PreparedStatement pstmt = null; ResultSet rs = null;
+		 */
 		BoardVO previousBoard = null;
 		try {
 			conn = dataSource.getConnection();
@@ -291,9 +291,9 @@ public class BoardDAO {
 
 	// Method to get next board details
 	public BoardVO getNextBoard(int bno) throws SQLException {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		/*
+		 * Connection conn = null; PreparedStatement pstmt = null; ResultSet rs = null;
+		 */
 		BoardVO nextBoard = null;
 		try {
 			conn = dataSource.getConnection();
