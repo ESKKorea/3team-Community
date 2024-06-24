@@ -47,7 +47,7 @@ public class BoardDetailServlet extends HttpServlet {
             boardDAO.incrementHitNo(bno);
 
             // 2. 게시물 조회
-            BoardVO boardVO = boardDAO.getBoard(bno);
+            BoardVO boardVO = boardDAO.getBoard(bno); //
 
             if (boardVO == null) {
                 throw new IllegalArgumentException("게시물을 찾을 수 없습니다.");
@@ -55,11 +55,11 @@ public class BoardDetailServlet extends HttpServlet {
 
             // 4. 댓글 목록 조회
             CommentDAO commentDAO = CommentDAO.getInstance();
-            List<CommentVO> comments = commentDAO.getCommentsByBoardId(bno);
+            List<CommentVO> comments = commentDAO.getCommentsByBoardId(bno);//
             
             // Retrieve previous and next board details
-            BoardVO previousBoard = boardDAO.getPreviousBoard(bno);
-            BoardVO nextBoard = boardDAO.getNextBoard(bno);
+            BoardVO previousBoard = boardDAO.getPreviousBoard(bno);//
+            BoardVO nextBoard = boardDAO.getNextBoard(bno);//
 
             // Set attributes in request scope
             request.setAttribute("boardVO", boardVO);
