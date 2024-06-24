@@ -34,7 +34,7 @@
 </head>
 <body>
 	<div class="container">
-		<jsp:include page="/common/header.jsp" />
+		<jsp:include page="/common/boardheader.jsp" />
 		<main>
 			<!-- 게시물 내용 표시 -->
 			<table>

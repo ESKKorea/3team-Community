@@ -16,26 +16,43 @@
 <title>boardList.jsp</title>
 <%-- css 자원요청 문자열에 시시각각 변하는 시간을 파라미터로 전달하기 때문에 서브는 매번 새로운 요청으로 착각, 
 	늘 css 읽어온다. 캐싱안함. --%>
-<link rel="stylesheet" type="text/css" href="<c:url value='/css/board.css' />?v=${now}" />
+<link rel="stylesheet" type="text/css" href="<c:url value='/css/boardList.css' />?v=${now}" />
 </head>
+
 <body>
-    <div class="container">
+	<div class="nav">
+    	<div class="logo">
+        <a href="${contextPath}/main.jsp"><img src="./image/logo.png" alt=""></a>
+    </div>
+    <div class="nav_but">
+        <a href="${contextPath}/boardList">자유게시판</a>
+        <a href="${contextPath}/galleryList">갤러리 게시판</a>
+        <a href="#">분양 게시판</a>
+        <c:choose>
+            <c:when test="${not empty sessionScope.member}">
+                <div class="user-info">
+                    <a href="<c:url value='/logout'/>">로그아웃</a>
+                    <p><strong>${sessionScope.member.name}</strong>님 환영합니다!</p>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <a href="<c:url value='/login'/>">로그인</a>
+            </c:otherwise>
+        </c:choose>
+   	</div>
+</div>
+   	
  		<%-- 헤더부분 include 액션 태그 사용, c:url 사용금지, 경로 직접 지정해야함. --%>
-		<jsp:include page="/common/header.jsp" />
+		<jsp:include page="/common/boardheader.jsp" />
+		
         <main>
-        	<h3>게시물 목록</h3>
-        	<form action="<c:url value='/boardList'/>" method="get" class="search-form" >
-        		<input type="text" name="keyword" placeholder="검색어 입력" />
-        		<input type="submit" value="검색" />
-        	</form>
-        	
         	<c:if test="${empty boardList}">
                 <p>게시물이 존재하지 않습니다.</p>
             </c:if>
             
             <c:if test="${not empty boardList}">
+            <div class="board-container">
 				<table border="1">
-					<caption>게시판 목록</caption>
 					<colgroup>
 						<col width="100" />
 						<col width="500" />
@@ -67,7 +84,7 @@
 										<c:forEach begin="1" end="${board.replyIndent}">
 											&nbsp;&nbsp;
 										</c:forEach>
-										<img src="<c:url value='/image/reply_icon.gif'/>" />
+										<img src="<c:url value='/image/icons8-reply-20.png'/>" />
 									</c:if>
 									<a href="<c:url value='/boardDetail'/>?bno=${board.bno}">
 										<c:out value="${board.title }"/>
@@ -80,23 +97,60 @@
 								<td><c:out value="${board.replyGroup }"/></td>
 								<td><c:out value="${board.replyOrder }"/></td>
 								<td><c:out value="${board.replyIndent }"/></td>
-
 							</tr>		
 						</c:forEach>
-						<tr>
-							<td align="center" colspan="8">${page_navigator}</td>
-						</tr>
 					</tbody>
-					<tfoot>
-						<tr>
-							<td align="center" colspan="8">Copyright javalab Corp.ltd All Rights Reserved</td>
-						</tr>
-					</tfoot>
 				</table>
 			</c:if>
-			<br>
-			<a href="<c:url value='/boardInsertForm.jsp'/>">게시물 작성</a>
+			 	<p align="center">${page_navigator}</p>
+    				<div class="button-container">
+    	    <br>
+        <a href="<c:url value='/boardInsertForm.jsp'/>">
+            <button type="button" id="button">게시물 작성</button>
+        </a>
+        <a href="${contextPath }/main.jsp">
+            <button type="button" id="button">메인 페이지로 이동</button>
+        </a>
+    </div>
 		</main>
-	</div>
+	
+	<footer>
+    <div class="container">
+        <div class="left">
+            <h1>CAT X DOG BOARD</h1>
+            <p>3TEAM@git.com</p>
+            <div class="sns">
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-github"></i>
+            </div>
+        </div>
+        <div class="right">
+            <div class="list">
+                <h2>context</h2>
+                <ul>
+                    <li>context1</li>
+                    <li>context2</li>
+                    <li>context3</li>
+                    <li>context4</li>
+                </ul>
+            </div>
+            <div class="list">
+                <h2>Popular Posts</h2>
+                <ul>
+                    <li>posts1</li>
+                    <li>posts2</li>
+                    <li>posts3</li>
+                    <li>posts4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copy_right">
+        <p>3TEAM3</p>
+    </div>
+   
+</footer>
 </body>
 </html>	

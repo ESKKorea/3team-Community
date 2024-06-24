@@ -12,11 +12,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>boardList.jsp</title>
+<title>galleryList.jsp</title>
 <%-- css 자원요청 문자열에 시시각각 변하는 시간을 파라미터로 전달하기 때문에 서브는 매번 새로운 요청을 착각, 
 	즉 늘 새로운 css를 읽어온다. 캐싱안함. --%>
-<link rel="styleSheet" type="text/css"
-	href="<c:url value='/css/galleryList.css'/>?v=${now}" />
+<link rel="styleSheet" type="text/css" href="<c:url value='/css/galleryList.css'/>?v=${now}" />
 </head>
 <body>
 <div class="nav">
@@ -40,6 +39,8 @@
         </c:choose>
     </div>
 </div>
+
+
 <header>
     <h3>Gallery List</h3>
     <form action="<c:url value='/galleryList' />" method="get" class="search-form">
@@ -51,7 +52,9 @@
         <input type="text" name="keyword" placeholder="검색어 입력" />
         <input type="submit" value="검색" />
     </form>
-    </header>
+</header>
+
+
 	<main>
     <div class="gallery-container">
         <c:forEach var="gallery" items="${galleryList}" varStatus="loop">
@@ -81,6 +84,9 @@
         </a>
     </div>
 </main>
+
+
+
 <footer>
     <div class="container">
         <div class="left">
@@ -118,6 +124,8 @@
         <p>3TEAM3</p>
     </div>
 </footer>
+
+
 <script>
     function setInfoBoxSize(img) {
         var infoBox = img.parentNode.querySelector('.gallery-info');
