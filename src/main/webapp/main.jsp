@@ -37,7 +37,6 @@
         </div>
     <section class="header">
         <div class="title">
-            <img src="./image/logomain.jpg" alt="Main Logo">
             <h1>Cat Board</h1>
             <p>환영합니다!!</p>
              <a href="" class="button-link">동물 보러가기</a>

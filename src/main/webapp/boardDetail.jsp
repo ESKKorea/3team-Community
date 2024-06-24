@@ -9,7 +9,28 @@
 <title>boardDetail.jsp</title>
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/board.css' />" />
-<
+<style>
+/* 이전 글 링크 스타일 */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button:active {
+    background-color: #004aad;
+}
+
+</style>
 </head>
 <body>
 	<div class="container">
@@ -87,8 +108,7 @@
 						<div class="previous">
 							<h3>이전글</h3>
 							<p>번호: ${previousBoard.bno}, 제목: ${previousBoard.title}</p>
-							<a href="<c:url value='/boardDetail'/>?bno=${previousBoard.bno}">자세히
-								보기</a>
+							<a href="<c:url value='/boardDetail'/>?bno=${previousBoard.bno}" class="button">이전 글</a>
 						</div>
 					</c:if>
 
@@ -96,8 +116,7 @@
 						<div class="next">
 							<h3>다음글</h3>
 							<p>번호: ${nextBoard.bno}, 제목: ${nextBoard.title}</p>
-							<a href="<c:url value='/boardDetail'/>?bno=${nextBoard.bno}">자세히
-								보기</a>
+							<a href="<c:url value='/boardDetail'/>?bno=${nextBoard.bno}" class="button">다음 글</a>
 						</div>
 					</c:if>
 				</div>

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    max-width: 1250px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+th, td {
+    border: 1px solid #ddd; /* 테두리 색상 */
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2; /* 헤더 배경색 */
+    color: #333; /* 헤더 텍스트 색상 */
+}
+
+td {
+    background-color: #fff; /* 셀 배경색 */
+}
+
+td a {
+    text-decoration: none;
+    color: #007bff; /* 링크 색상 */
+    transition: color 0.3s; /* 링크 색상 변화 애니메이션 */
+}
+
+td a:hover {
+    color: #0056b3; /* 호버 시 링크 색상 변화 */
+}
+
+.insert-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.insert-link a {
+    font-size: 1.1em;
+    text-decoration: none;
+    color: #007bff;
+    border: 2px solid #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.insert-link a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+  caption {
+      font-size: 1.5em; /* 캡션 글자 크기 */
+      font-weight: bold; /* 글자 굵기 */	
+      text-align: center; /* 가운데 정렬 */
+      margin-bottom: 10px; /* 아래 여백 */
+      color: #000000; /* 글자 색상 */
+      text-transform: uppercase; /* 대문자로 변환 */
+      letter-spacing: 1px; /* 글자 간격 */
+  }
+  .register-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* Text color */
+    border: 2px solid transparent;
+    border-radius: 5px;	
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    border-color: #357934; /* Darker border color on hover */
+}
+
+.register-button:active {
+    background-color: #3e8e41; /* Even darker green when clicked */
+    border-color: #2b6e31; /* Even darker border color when clicked */
+}
