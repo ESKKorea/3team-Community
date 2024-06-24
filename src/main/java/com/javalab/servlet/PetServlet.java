@@ -1,7 +1,6 @@
 package com.javalab.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +28,7 @@ public class PetServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	System.out.println("petservlet dopost");
         // 요청으로부터 데이터 인코딩 설정
         request.setCharacterEncoding("UTF-8");
 
@@ -37,6 +37,7 @@ public class PetServlet extends HttpServlet {
         int age = Integer.parseInt(request.getParameter("age"));
         String type = request.getParameter("type");
         String description = request.getParameter("description");
+        System.out.println("petservlet dopost name : " + name);
 
         // 세션에서 로그인된 회원 정보 가져오기
         HttpSession session = request.getSession();
@@ -47,17 +48,25 @@ public class PetServlet extends HttpServlet {
         PetVO pet = new PetVO();
         pet.setName(name);
         pet.setAge(age);
-		/* pet.setType(type); */
+        pet.setType(type);
         pet.setDescription(description);
-		/* pet.setMemberId(memberId); */
+        pet.setMemberId(memberId);
 
         // PetDAO 인스턴스 생성
         PetDAO petDAO = PetDAO.getInstance();
 
         // 반려동물 정보 데이터베이스에 등록
-        petDAO.insertPet(pet);
+        int rowsInserted = petDAO.insertPet(pet);
 
-        // 등록 성공 시, petList 페이지로 리다이렉트
-        response.sendRedirect(request.getContextPath() + "/petList");
+        // 등록 결과에 따라 처리
+        if (rowsInserted > 0) {
+            // 등록 성공 시, 반려동물 목록 페이지로 리다이렉트
+            response.sendRedirect(request.getContextPath() + "/petList");
+        } else {
+            // 등록 실패 시, 오류 메시지와 함께 다시 등록 폼 페이지로 포워딩
+            request.setAttribute("error", "반려동물 정보 등록에 실패했습니다.");
+            request.getRequestDispatcher("/petInsertForm.jsp").forward(request, response);
+        }
     }
 }
+
