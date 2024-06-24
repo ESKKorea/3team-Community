@@ -1,0 +1,47 @@
+-- 회원 테이블
+create table member(
+    member_id varchar2(20) constraint pk_member primary key,
+    password varchar2(50) not null,
+    name varchar2(20) not null,
+    email varchar2(50) unique
+);
+
+-- 게시판 테이블
+create table board(
+    bno number constraint pk_board primary key,
+    title varchar2(200) not null,
+    content clob not null,
+    member_id varchar2(20),
+    hit_no number default 0,
+    reg_date date default sysdate,
+    
+    reply_group number(5) default 0, /* 원글과 답글을 묶어주는 역할(그룹) */
+    reply_order number(5) default 0, /* 그룹 내 정렬순서 */
+    reply_indent number(5) default 0/* 들여쓰기 */
+);
+-- 시퀀스
+create sequence seq_board increment by 1 start with 1;
+
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'First Post','This is the first post.','java',0,to_date('22/01/01','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Second Post','This is the second post.','java',0,to_date('22/01/02','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Third Post','This is the third post.','java',0,to_date('22/02/03','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Fourth Post','This is the fourth post.','java',0,to_date('22/03/04','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Fifth Post','This is the fifth post.','java',0,to_date('22/04/05','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Sixth to First Post','This is a Sixth post.','java',0,to_date('22/05/06','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Seventh to First Post','This is Seventh post.','java',0,to_date('22/06/07','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Eight to Second Post','This is Eight post.','java',0,to_date('22/07/08','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Ninth to Second Post','This is Ninth post.','java',0,to_date('22/08/08','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Tenth to Third Post','This is a Tenth post.','java',0,to_date('22/09/10','RR/MM/DD'),seq_board.currval,0,0);
+commit; --
+
+
