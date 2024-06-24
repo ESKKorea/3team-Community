@@ -1,6 +1,9 @@
 package com.javalab.servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.javalab.dao.BoardDAO;
+import com.javalab.dao.MemberDAO;
 import com.javalab.vo.BoardVO;
 import com.javalab.vo.MemberVO;
 
@@ -62,7 +66,7 @@ public class BoardServlet extends HttpServlet {
 	    
 	    if(row > 0) {	// 게시물 정상 등록
 	    	String contextPath = request.getContextPath();
-	    	response.sendRedirect(contextPath + "/boardList.jsp");	// 임시 이동
+	    	response.sendRedirect(contextPath + "/main.jsp");	// 임시 이동
 	    }else {
 	    	request.setAttribute("error", "게시물 작성에 실패했습니다.");
 	    	RequestDispatcher rd = request.getRequestDispatcher("/boardInsertForm.jsp");
