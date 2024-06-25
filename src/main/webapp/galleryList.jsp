@@ -20,7 +20,7 @@
 <body>
 <div class="nav">
     <div class="logo">
-        <a href="${contextPath}/main.jsp"><img src="./image/logo.png" alt=""></a>
+        <a href="${contextPath}/index.jsp"><img src="./image/logo.png" alt=""></a>
     </div>
     <div class="nav_but">
         <a href="${contextPath}/boardList">자유게시판</a>
@@ -79,7 +79,7 @@
         <a href="<c:url value='/galleryInsertForm.jsp'/>">
             <button type="button" id="button">게시물 작성</button>
         </a>
-        <a href="${contextPath }/main.jsp">
+        <a href="${contextPath }/index.jsp">
             <button type="button" id="button">메인 페이지로 이동</button>
         </a>
     </div>
