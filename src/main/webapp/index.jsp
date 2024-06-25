@@ -17,7 +17,6 @@
 	
 	<p><a href="${contextPath}/login">로그인</a></p>
 	<!-- c:url : 컨텍스트패스를 자동으로 넣어준다. -->
-	<p><a href="<c:url value='/login'/>">로그인</a></p>
 
 
 </body>

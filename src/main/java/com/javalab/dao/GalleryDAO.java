@@ -194,7 +194,8 @@ public int insertGallery(GalleryVO galleryVO) {
 	            gallery.setReplyOrder(rs.getInt("reply_order"));
 	            gallery.setReplyIndent(rs.getInt("reply_indent"));
 	            
-	            galleryList.add(gallery);
+				galleryList.add(gallery); 
+	         
 	        }
 	    } catch (SQLException e) {
 	        System.out.println("getGalleryList ERR : " + e.getMessage());
@@ -252,9 +253,10 @@ public int insertGallery(GalleryVO galleryVO) {
          conn = dataSource.getConnection();
          
            // 게시물 조회 쿼리
-           String sql = "select bno, title, description, file_name, file_path, member_id, reg_date, " +
-                    "reply_group, reply_order, reply_indent " +                 
-                    "from gallery where bno=? " ;        
+         String sql = "SELECT bno, title, description, file_name, file_path, member_id, reg_date, " +
+                 "reply_group, reply_order, reply_indent, hit_no " +                 
+                 "FROM gallery " + 
+                 "WHERE bno = ? ";       
            pstmt = conn.prepareStatement(sql);   // PreparedStatement 객체 얻기(쿼리문 전달)
            pstmt.setInt(1, bno);
            rs = pstmt.executeQuery(); // 게시물 1건 반환
@@ -264,12 +266,15 @@ public int insertGallery(GalleryVO galleryVO) {
             galleryVO.setBno(rs.getInt("bno"));
             galleryVO.setTitle(rs.getString("title"));
             galleryVO.setDescription(rs.getString("description"));      // 게시물 내용
+            galleryVO.setFileName(rs.getString("file_name"));	
             galleryVO.setMemberId(rs.getString("member_id"));
             galleryVO.setRegDate(rs.getDate("reg_date"));
             galleryVO.setHitNo(rs.getInt("hit_no"));            // 조회수
             galleryVO.setReplyGroup(rs.getInt("reply_group"));   // 그룹번호
             galleryVO.setReplyOrder(rs.getInt("reply_order"));   // 그룹내 순서
             galleryVO.setReplyIndent(rs.getInt("reply_indent"));   // 들여쓰기
+            galleryVO.setHitNo(rs.getInt("hit_no"));
+            
          }        
        } catch (SQLException e) {
           System.out.println("getgallery() ERR => " + e.getMessage());
@@ -281,7 +286,7 @@ public int insertGallery(GalleryVO galleryVO) {
    }
    
    /**
-    * 게시물 조회수 증가 메소드
+    * 게시물 	조회수 증가 메소드
     */
    public void incrementHitNo(int bno) {
       try {
@@ -377,6 +382,7 @@ public int insertGallery(GalleryVO galleryVO) {
          }
       }catch (Exception e) {
          e.printStackTrace();
+         
       }
       return totalCount;
    }

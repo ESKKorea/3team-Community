@@ -80,7 +80,74 @@
 
 
 
-body {
+body{
+	
+}
+.nav {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.nav .logo img {
+    width: 110px;
+    height: 70px;
+}
+
+.nav .nav_but {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* 각 링크 사이의 간격을 설정 */
+}
+
+.nav .nav_but a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav .nav_but a:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    border-color: #ccc;
+}
+
+.nav .nav_but a:active {
+    background-color: #ddd;
+    color: black;
+    border-color: #999;
+}
+
+.nav .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 사용자 정보 내 요소들 사이의 간격 설정 */
+}
+
+.nav .user-info p {
+    margin: 0;
+    
+}
+
+.nav .user-info a {
+    text-decoration: none;
+    color: #black	;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+
+
+
+main {
 	border: 2px solid black;
 	font-family: Arial, sans-serif;
 	margin: 100px;
@@ -128,6 +195,86 @@ body {
 .button-container button:hover {
 	background-color: #e0e0e0;
 }
-</
-style
->
+
+footer {
+	color: white;
+	background: black;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+footer .container {
+	max-width: 1000px;
+	margin: auto;
+	padding-bottom: 10px;
+	display: flex;
+	align-items: center;
+}
+
+footer .container .left {
+	flex: 1;
+}
+
+footer .container .left h1 {
+	margin: 0;
+}
+
+footer .container .left p {
+	margin: 0;
+	font-size: 10px;
+}
+
+footer .container .left .sns {
+	margin-top: 30px;
+}
+
+footer .container .left .sns i {
+	font-size: 24px;
+	margin-right: 20px;
+}
+
+footer .container .right {
+	flex: 3;
+	padding-left: 50px;
+}
+
+footer .container .right {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+footer .container .right .list {
+	flex: 1;
+	margin-left: 20px;
+}
+
+footer .container .right .list h2 {
+	padding-left: 5px;
+	padding-right: 5px;
+	margin: 0;
+	padding-bottom: 10xp;
+	border-bottom: 1px solid white;
+}
+
+footer .container .right .list ul {
+	list-style: none;
+	padding: 0;
+}
+
+footer .container .right .list ul li {
+	padding: 5px 5px;
+}
+
+footer .container .right .list ul li:hover {
+	background: #222;
+}
+
+footer .copy_right {
+	text-align: center;
+}
+
+footer .copy_right p {
+	font-size: 10px;
+	margin: 0;
+}

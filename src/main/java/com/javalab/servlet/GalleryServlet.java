@@ -88,7 +88,7 @@ public class GalleryServlet extends HttpServlet {
         int result = galleryDAO.insertGallery(galleryVO);
 
         if (result > 0) {
-            response.sendRedirect("galleryList.jsp"); // 성공 시 갤러리 목록으로 리다이렉트
+        	response.sendRedirect(request.getContextPath() + "/galleryList"); // 성공 시 갤러리 목록으로 리다이렉트
         } else {
             request.setAttribute("error", "게시물 등록에 실패했습니다.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("galleryInsertForm.jsp");
