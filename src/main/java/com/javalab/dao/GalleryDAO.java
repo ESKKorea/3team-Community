@@ -216,7 +216,7 @@ public int insertGallery(GalleryVO galleryVO) {
       try {
          conn = dataSource.getConnection();
          
-         String sql = "select bno, title, description, member_id, reg_date from gallery " +
+         String sql = "select bno, title, description, file_name, file_path, member_id, reg_date from gallery " +
                   " where title like ? or description like ? or member_id like ?";
          pstmt = conn.prepareStatement(sql);
          pstmt.setString(1, "%" + keyword + "%");
@@ -228,6 +228,8 @@ public int insertGallery(GalleryVO galleryVO) {
             GalleryVO galleryVO = new GalleryVO();
             galleryVO.setBno(rs.getInt("bno"));
             galleryVO.setTitle(rs.getString("title"));
+            galleryVO.setFileName(rs.getString("file_name"));
+            galleryVO.setFilePath(rs.getString("file_path"));
             galleryVO.setDescription(rs.getString("description"));
             galleryVO.setMemberId(rs.getString("member_id"));
             galleryVO.setRegDate(rs.getDate("reg_date"));
