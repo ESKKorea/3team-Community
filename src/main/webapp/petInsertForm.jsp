@@ -18,7 +18,7 @@
 <body>
    <div class="container">
 
-		<jsp:include page="/common/boardheader.jsp" />
+		<jsp:include page="/common/upperPart.jsp" />
 
         <main>
         <section class="header"> <!-- section 추가 header -->
@@ -49,7 +49,6 @@
 				</form>
 			</c:if>
 			</section>
-			<jsp:include page="/common/lowerPart.jsp" /> <!-- footer 부분 -->
 			<c:if test="${empty sessionScope.member}">
 				<script>
 					alert('회원만 유기견/유기묘 정보를 등록할 수 있습니다');
