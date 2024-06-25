@@ -66,7 +66,7 @@ public class BoardServlet extends HttpServlet {
 	    
 	    if(row > 0) {	// 게시물 정상 등록
 	    	String contextPath = request.getContextPath();
-	    	response.sendRedirect(contextPath + "/index.jsp");	// 임시 이동
+	    	response.sendRedirect(contextPath + "/boardList");	// 임시 이동
 	    }else {
 	    	request.setAttribute("error", "게시물 작성에 실패했습니다.");
 	    	RequestDispatcher rd = request.getRequestDispatcher("/boardInsertForm.jsp");
