@@ -1,40 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.sql.*, java.util.*, com.javalab.vo.*, com.javalab.dao.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<%-- 현재 시간의 시분초를 now 변수에 세팅 --%>
+<c:set var="now" value="<%= new java.util.Date() %>" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>boardDetail.jsp</title>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/board.css' />" />
+	href="<c:url value='/css/boardDetail.css' />" />
 <style>
 /* 이전 글 링크 스타일 */
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
 
-.button:hover {
-    background-color: #0056b3;
-}
-
-.button:active {
-    background-color: #004aad;
-}
 
 </style>
 </head>
 <body>
+<div class="nav">
+        <div class="logo">
+        <a href="${contextPath}/index.jsp"><img src="./image/logo.png" alt=""></a>
+        </div>
+        <div class="nav_but">
+            <a href="${contextPath}/boardList">자유게시판</a>
+            <a href="${contextPath}/galleryList">갤러리 게시판</a>
+            <a href="">분양 게시판</a>
+             <c:choose>
+            <c:when test="${not empty sessionScope.member}">
+            	<div class="user-info">
+                 <a href="<c:url value='/logout'/>">로그아웃</a>
+                <p><strong>${sessionScope.member.name}</strong>님 환영합니다!</p>
+                 </div>
+            </c:when>
+            <c:otherwise>
+                <a href="<c:url value='/login'/>">로그인</a>
+            </c:otherwise>
+        </c:choose>
+        	</div>
+        </div>
 	<div class="container">
-		<jsp:include page="/common/boardheader.jsp" />
 		<main>
 			<!-- 게시물 내용 표시 -->
 			<table>
@@ -72,7 +80,7 @@
 				<form action="<c:url value='/boardDelete'/>" method="post"
 					style="display: inline;">
 					<input type="hidden" name="bno" value="${boardVO.bno}">
-					<button type="submit" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
+					<button type="submit" id="delete_button" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
 				</form>
 				<a href="<c:url value='/reply'/>?bno=${boardVO.bno}" class="button">답글작성</a>
 			</div>
@@ -103,6 +111,9 @@
 					</div>
 				</c:forEach>
 				<!-- 이전글과 다음글 섹션 -->
+			</div>
+		</main>
+	</div>
 				<div class="prev-next-section">
 					<c:if test="${not empty previousBoard}">
 						<div class="previous">
@@ -120,8 +131,42 @@
 						</div>
 					</c:if>
 				</div>
-			</div>
-		</main>
-	</div>
+				<footer>
+    <div class="container">
+        <div class="left">
+            <h1>CAT X DOG BOARD</h1>
+            <p>3TEAM@git.com</p>
+            <div class="sns">
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-github"></i>
+            </div>
+        </div>
+        <div class="right">
+            <div class="list">
+                <h2>context</h2>
+                <ul>
+                    <li>context1</li>
+                    <li>context2</li>
+                    <li>context3</li>
+                    <li>context4</li>
+                </ul>
+            </div>
+            <div class="list">
+                <h2>Popular Posts</h2>
+                <ul>
+                    <li>posts1</li>
+                    <li>posts2</li>
+                    <li>posts3</li>
+                    <li>posts4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copy_right">
+        <p>3TEAM3</p>
+    </div>
+</footer>
 </body>
 </html>
