@@ -37,10 +37,9 @@ public class LoginDAO {
 	 */
 	public LoginDAO() {
 		try {
-			// 커넥션 풀을 참조하기위한 환경변수(네이밍컨텍스트) 정보를 가지고 있는 객체
-			Context ctx = new InitialContext();	
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle"); // 커넥션풀
-		}catch (Exception e) {
+			Context ctx = new InitialContext();
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

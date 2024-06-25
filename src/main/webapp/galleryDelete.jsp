@@ -11,19 +11,19 @@
     int bno = Integer.parseInt(request.getParameter("bno")); // 게시물 번호
     
     // 데이터베이스 드라이버 로딩 문자열 
-    String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
+  /*    String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
     // 데이터베이스 연결 문자열
     String DB_URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-    String DB_USER = "rboard";
-    String DB_PASSWORD = "1234";
+    String DB_USER = "teamboard";
+    String DB_PASSWORD = "1234";  */
     
     Connection conn = null;   // 커넥션 객체
     PreparedStatement pstmt = null;   // 쿼리문 생성 및 실행 객체
     ResultSet rs = null;   // 쿼리 실행 결과 반환 객체
     
     try {
-        Class.forName(JDBC_DRIVER);   // jdbc 드라이버 로딩
-        conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); // 커넥션 객체 획득
+/*         Class.forName(JDBC_DRIVER);   // jdbc 드라이버 로딩
+        conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); // 커넥션 객체 획득 */
         
         String sql = "delete gallery where bno=?" ; // ? 동적 파라미터
         

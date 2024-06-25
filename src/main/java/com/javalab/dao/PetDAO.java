@@ -34,13 +34,13 @@ public class PetDAO {
      * - 외부에서 절대 호출할 수 없으며, 객체 생성 불가
      */
     private PetDAO() {
-        try {
-            Context ctx = new InitialContext();
-            dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    	try {
+			Context ctx = new InitialContext();
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
     /**
      * PetDAO 자신의 인스턴스(객체)를 반환하는 메서드

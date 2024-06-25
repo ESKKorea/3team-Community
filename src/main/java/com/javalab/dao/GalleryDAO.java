@@ -33,13 +33,13 @@ public class GalleryDAO {
     * - 밖에서는 절대로 호출할 수 없다. 즉, 밖에서는 객체 생성 불가.
     */
    private GalleryDAO() {
-      try {
-         Context ctx = new InitialContext();
-         dataSource = (DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
-      }catch (Exception e) {
-         e.printStackTrace();
-      }
-   }
+		try {
+			Context ctx = new InitialContext();
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
    
    /**
     * BoardDAO 자신의 인스턴스(객체)를 반환해주는 메소드

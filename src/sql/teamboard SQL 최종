@@ -1,0 +1,124 @@
+create user teamboard identified by 1234;
+grant connect, resource to teamboard;
+grant unlimited tablespace to teamboard;
+
+/*===========================================*/
+
+create table member(
+    member_id varchar2(20) constraint pk_member primary key,
+    password varchar2(50) not null,
+    name varchar2(20) not null,
+    email varchar2(50) unique
+);
+
+/*===========================================*/
+
+CREATE TABLE board(
+    bno NUMBER CONSTRAINT pk_board PRIMARY KEY,
+    title VARCHAR2(200) NOT NULL,
+    content CLOB NOT NULL,
+    member_id VARCHAR2(20),
+    hit_no NUMBER DEFAULT 0,
+    reg_date DATE DEFAULT SYSDATE,
+    reply_group NUMBER(5) DEFAULT 0, /* 원글과 답글을 묶어주는 역할(그룹) */
+    reply_order NUMBER(5) DEFAULT 0, /* 그룹 내 정렬순서 */
+    reply_indent NUMBER(5) DEFAULT 0, /* 들여쓰기 */
+    CONSTRAINT FK_MEMBER_ID_FREE FOREIGN KEY (member_id) REFERENCES MEMBER (MEMBER_ID)
+);
+
+create sequence seq_board 
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+/*===========================================*/
+
+create table gallery(
+    bno number constraint pk_gallery primary key,
+    title varchar2(200) not null,
+    description clob,
+    member_id varchar2(20),
+    file_name VARCHAR(255) NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    reg_date date default sysdate,
+    constraint fk_gallery_member_id foreign key(member_id) references member(member_id),
+     reply_group number(5) default 0,
+     reply_order number(5) default 0,
+     reply_indent number(5) default 0
+);
+
+create sequence seq_gallery 
+increment by 1 
+start with 1
+NOCACHE
+NOCYCLE;
+/*===========================================*/
+
+CREATE SEQUENCE SEQ_COMMENTS
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+CREATE TABLE COMMENTS (
+    ID NUMBER PRIMARY KEY,
+    BOARD_ID NUMBER NOT NULL,
+    MEMBER_ID VARCHAR2(20) NOT NULL,
+    CONTENT VARCHAR2(4000) NOT NULL,
+    REG_DATE date default sysdate,
+    FOREIGN KEY (BOARD_ID) REFERENCES BOARD(BNO),
+    FOREIGN KEY (MEMBER_ID) REFERENCES MEMBER(MEMBER_ID)
+);
+
+
+CREATE OR REPLACE TRIGGER COMMENTS_BEFORE_INSERT
+BEFORE INSERT ON COMMENTS
+FOR EACH ROW
+BEGIN
+    :NEW.ID := SEQ_COMMENTS.NEXTVAL;
+    :NEW.REG_DATE := SYSDATE;
+END;
+
+/*============================*/
+
+CREATE TABLE GALLERY_COMMENTS (
+    ID NUMBER PRIMARY KEY,
+    GALLERY_ID NUMBER NOT NULL,
+    MEMBER_ID VARCHAR2(50) NOT NULL,
+    CONTENT VARCHAR2(4000) NOT NULL,
+    REG_DATE DATE DEFAULT SYSDATE,
+    CONSTRAINT FK_GALLERY_ID FOREIGN KEY (GALLERY_ID) REFERENCES GALLERY(BNO),
+    CONSTRAINT FK_MEMBER_ID FOREIGN KEY (MEMBER_ID) REFERENCES MEMBER(MEMBER_ID)
+);
+
+
+CREATE SEQUENCE SEQ_GALLERY_COMMENTS
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE OR REPLACE TRIGGER TRG_GALLERY_COMMENTS_ID
+BEFORE INSERT ON GALLERY_COMMENTS
+FOR EACH ROW
+BEGIN
+:NEW.ID := SEQ_GALLERY_COMMENTS.NEXTVAL;
+END;
+
+/*===========================================*/
+
+CREATE TABLE pet (
+    bno NUMBER CONSTRAINT pk_pet PRIMARY KEY,
+    name VARCHAR2(100),
+    age INT,
+    description VARCHAR2(255),
+    reg_date DATE DEFAULT SYSDATE,
+    member_id VARCHAR2(50), 
+    CONSTRAINT fk_pet_member_id FOREIGN KEY (member_id) REFERENCES member(member_id)
+);
+
+CREATE SEQUENCE seq_pet START WITH 1 INCREMENT BY 1;
+
+INSERT INTO pet (bno, name, age, description) VALUES (3, '까미', 1, '애교쟁이 왕자님');
+
+commit;
