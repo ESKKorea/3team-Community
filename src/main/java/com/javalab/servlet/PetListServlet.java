@@ -1,6 +1,7 @@
 package com.javalab.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -43,7 +44,7 @@ public class PetListServlet extends HttpServlet {
 
         // 데이터베이스 전담 객체 생성
         PetDAO petDAO = PetDAO.getInstance();
-
+        
         // 전체 반려동물 수 구하기 (가정)
         int totalCount = petDAO.getAllCount(); // 실제 구현 필요
 
@@ -61,8 +62,15 @@ public class PetListServlet extends HttpServlet {
                 currentPage); // 현재 페이지
 
         // petList 가져오기
-        List<PetVO> petList = petDAO.getPetList(currentPage, 10); // 실제 구현 필요
+        List<PetVO> petList = new ArrayList<>();// 실제 구현 필요
 
+        // 키워드 유무에 따른 분기
+	      if(keyword != null && !keyword.isEmpty()) {
+	         petList = petDAO.searchPetList(keyword); // 검색기능 메소드 호출
+	      }else {
+	         petList = petDAO.getPetList(currentPage, 10); // getBoardList() 호출
+	      }
+	      
         // request 영역에 데이터 저장
         request.setAttribute("page_navigator", pageNavigatorString); // 페이징 처리 문자열
         request.setAttribute("petList", petList); // 반려동물 목록
