@@ -18,7 +18,7 @@
 <body>
    <div class="container">
 
-		<jsp:include page="/common/header.jsp" />
+		<jsp:include page="/common/boardheader.jsp" />
 
         <main>
         <section class="header"> <!-- section 추가 header -->

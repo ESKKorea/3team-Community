@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="container">
-        <jsp:include page="/common/header.jsp" />
+        <jsp:include page="/common/boardheader.jsp" />
         <main>
             <!-- 유기견/유기묘 정보 표시 -->
             <table>
