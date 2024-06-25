@@ -17,7 +17,6 @@
 <body>
    <div class="container">
 		<jsp:include page="/common/header.jsp" />
-		
         <main>
 			<c:if test="${not empty sessionScope.member}">
 				<h3>유기견/유기묘 정보 등록</h3>
