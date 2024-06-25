@@ -17,7 +17,53 @@
 <style>
 /* 이전 글 링크 스타일 */
 
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer; /* 추가된 속성: 마우스 포인터를 가리키면 커서를 변경합니다. */
+}
 
+.button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3; /* 버튼에 호버 효과가 적용될 때 테두리 색상을 변경합니다. */
+}
+
+.button:active {
+    background-color: #004aad;
+    border-color: #004aad; /* 버튼을 클릭했을 때 테두리 색상을 변경합니다. */
+}
+   .delete-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #dc3545;
+        color: white;
+        text-decoration: none;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+
+
+
+    .delete-button:hover {
+        background-color: #c82333;
+        border-color: #c82333;
+    }
+
+    .delete-button:active {
+        background-color: #bd2130;
+        border-color: #bd2130;
+        transform: scale(0.95); /* 클릭 시 크기를 조금 줄임 */
+    }
 </style>
 </head>
 <body>
@@ -80,7 +126,11 @@
 				<form action="<c:url value='/boardDelete'/>" method="post"
 					style="display: inline;">
 					<input type="hidden" name="bno" value="${boardVO.bno}">
-					<button type="submit" id="delete_button" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
+
+					<button type="submit" class="delete-button" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>
+
+					
+
 				</form>
 				<a href="<c:url value='/reply'/>?bno=${boardVO.bno}" class="button">답글작성</a>
 			</div>
