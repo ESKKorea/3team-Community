@@ -128,7 +128,7 @@ public class PetDAO {
         try {
             conn = dataSource.getConnection();
 
-            String sql = "SELECT bno, name, age, description, member_id, reg_date FROM pet WHERE bno=?";
+            String sql = "SELECT bno, name, age, description, member_id, reg_date FROM pet WHERE bno=? ";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, bno);
             rs = pstmt.executeQuery();
@@ -221,8 +221,8 @@ public class PetDAO {
 		try {
 			conn = dataSource.getConnection();
 			
-			String sql = "select bno, title, content, member_id, reg_date, hit_no from pet " +
-						" where title like ? or content like ? ";
+			String sql = "select bno, name, age, description, member_id, reg_date from pet " +
+						" where name like ? or description like ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword + "%");
 			pstmt.setString(2, "%" + keyword + "%");

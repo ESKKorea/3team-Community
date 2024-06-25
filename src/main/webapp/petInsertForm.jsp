@@ -17,7 +17,9 @@
 </head>
 <body>
    <div class="container">
-   <jsp:include page="/common/upperPart.jsp" /> <!-- nva 부분 -->	
+
+		<jsp:include page="/common/header.jsp" />
+
         <main>
         <section class="header"> <!-- section 추가 header -->
 			<c:if test="${not empty sessionScope.member}">
