@@ -11,7 +11,7 @@
 <body>
 	<div class="nav">
 		<div class="logo">
-			<a href="${contextPath}/main.jsp"><img src="./image/logo.png"
+			<a href="${contextPath}/index.jsp"><img src="./image/logo.png"
 				alt=""></a>
 		</div>
 		<div class="nav_but">
@@ -20,7 +20,7 @@
 			<c:choose>
 				<c:when test="${not empty sessionScope.member}">
 					<div class="user-info">
-						<a href="<c:url value='/logout'/>">로그아웃</a>
+						<a href="<c:url value='/logoutServlet'/>">로그아웃</a>
 						<p>
 							<strong>${sessionScope.member.name}</strong>님 환영합니다!
 						</p>

@@ -21,7 +21,7 @@
 <body>
     <div class="container">
  		<%-- 헤더부분 include 액션 태그 사용, c:url 사용금지, 경로 직접 지정해야함. --%>
-		<jsp:include page="/common/header.jsp" />
+		<jsp:include page="/common/upperPart.jsp" />
         <main>
         	<h3>게시물 목록</h3>
         	<form action="<c:url value='/boardList'/>" method="get" class="search-form" >
