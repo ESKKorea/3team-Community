@@ -17,7 +17,7 @@
 
 	 <div class="nav">
         <div class="logo">
-            <img src="./image/logo.png" alt="">
+             <a href="${contextPath}/index.jsp"><img src="./image/logo.png" alt=""></a>
         </div>
         <div class="nav_but">
 
