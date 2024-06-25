@@ -90,7 +90,7 @@
              <c:choose>
             <c:when test="${not empty sessionScope.member}">
             	<div class="user-info">
-                 <a href="<c:url value='/logout'/>">로그아웃</a>
+                 <a href="<c:url value='/logoutServlet'/>">로그아웃</a>
                 <p><strong>${sessionScope.member.name}</strong>님 환영합니다!</p>
                  </div>
             </c:when>
