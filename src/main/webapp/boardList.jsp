@@ -43,8 +43,12 @@
 </div>
    	
  		<%-- 헤더부분 include 액션 태그 사용, c:url 사용금지, 경로 직접 지정해야함. --%>
+
+
+
 		<jsp:include page="/common/boardheader.jsp" />
 		
+
         <main>
         	<c:if test="${empty boardList}">
                 <p>게시물이 존재하지 않습니다.</p>

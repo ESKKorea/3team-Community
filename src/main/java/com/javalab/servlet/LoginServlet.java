@@ -78,9 +78,9 @@ public class LoginServlet extends HttpServlet {
 			HttpSession ses = request.getSession(); // 세션 객체 얻기
 			ses.setAttribute("member", member); // 세션에 member라는 이름으로 사용자 자바빈즈 저장
 
-			// 로그인 성공으로 main.jsp페이지로 이동
+			// 로그인 성공으로 index.jsp페이지로 이동
 			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath + "/main.jsp");
+			response.sendRedirect(contextPath + "/index.jsp");
 		} else { // 로그인 실패
 			// 오류 메시지 세팅
 			request.setAttribute("error", "아이디와 비밀번호를 확인하세요");
