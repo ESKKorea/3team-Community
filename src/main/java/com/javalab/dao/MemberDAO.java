@@ -23,8 +23,8 @@ public class MemberDAO {
 		try {
 			Context ctx = new InitialContext();
 			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
-		}catch (Exception e) {
-			// TODO: handle exception
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
