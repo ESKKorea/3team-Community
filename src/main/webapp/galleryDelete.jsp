@@ -14,7 +14,7 @@
     String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
     // 데이터베이스 연결 문자열
     String DB_URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-    String DB_USER = "rboard";
+    String DB_USER = "teamboard";
     String DB_PASSWORD = "1234";
     
     Connection conn = null;   // 커넥션 객체

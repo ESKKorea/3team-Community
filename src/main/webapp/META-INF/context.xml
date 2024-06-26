@@ -31,7 +31,7 @@
               type="javax.sql.DataSource"
               driverClassName="oracle.jdbc.OracleDriver"
               url="jdbc:oracle:thin:@localhost:1521:orcl"
-              username="rboard"
+              username="teamboard"
               password="1234"
               maxTotal="100"
               maxIdle="30"
