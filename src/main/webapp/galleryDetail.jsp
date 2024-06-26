@@ -116,9 +116,9 @@
         <a href="<c:url value='/galleryList'/>"><button type="button" id="button">목록</button></a>
         <form action="<c:url value='/galleryDelete'/>" method="post">
             <input type="hidden" name="bno" value="${gallery.bno}">
-            <input type="submit" value="삭제" onclick="return confirm('정말 삭제하시겠습니까?');" style="padding: 10px 20px; border: none; cursor: pointer; background-color: #f8f8f8; color: black; border-radius: 5px; transition: background-color 0.3s ease;">
+            <input type="submit" value="삭제" id="delete-btn" onclick="return confirm('정말 삭제하시겠습니까?');">
         </form>
-        <a href="<c:url value='/reply'/>?bno=${gallery.bno}"><button style="padding: 10px 20px; border: none; cursor: pointer; background-color: #f8f8f8; color: black; border-radius: 5px; transition: background-color 0.3s ease;">답글작성</button></a>
+        <a href="<c:url value='/reply'/>?bno=${gallery.bno}"><button type="button" id="button">답글작성</button></a>
     </div>
 
     <!-- 댓글 섹션 시작 -->

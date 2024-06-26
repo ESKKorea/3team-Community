@@ -39,7 +39,7 @@
         </c:choose>
         	</div>
         </div>
-        <main>
+        <main class="boradInsertForm_main">
    <div class="box">
 			<c:if test="${ not empty sessionScope.member }">
 				<h3>게시물 작성</h3>
